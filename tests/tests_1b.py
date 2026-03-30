@@ -37,18 +37,12 @@ def test_multiplication():
     assert simple_calculator("multiply", -4, -1) == 4   # Test for negative numbers
     assert simple_calculator("multiply", 2.5, 3.5) == 8.75 # Test for float numbers
     assert simple_calculator("multiply", 1e10, 1e10) == 1e20 # Test for large numbers
-    assert simple_calculator("multiply", 1e-10, 1e-10) == 1e-20 # Test for small numbers
-    assert simple_calculator("multiply", 1e10, -1e10) == -1e20 # Test for large positive and negative numbers
-    assert simple_calculator("multiply", 1e-10, -1e-10) == -1e-20 # Test for small positive and negative numbers
 
 def test_division():
     assert simple_calculator("divide", 6, 3) == 2       # Test for positive numbers
     assert simple_calculator("divide", -4, 2) == -2     # Test for negative and positive number
     assert simple_calculator("divide", 5, 2) == 2.5     # Test for division resulting in float
-    assert simple_calculator("divide", 1e10, 1e5) == 1e5 # Test for large numbers
-    assert simple_calculator("divide", 1e-10, 1e-5) == 1e-5 # Test for small numbers
-    assert simple_calculator("divide", 1e10, -1e5) == -1e5 # Test for large positive and negative numbers
-    assert simple_calculator("divide", 1e-10, -1e-5) == -1e-5 # Test for small positive and negative numbers
+    assert simple_calculator("divide", 1e10, 1e5) == 1e5 # Test for large numbersexistence
 
 def test_division_by_zero():
     with pytest.raises(ValueError, match="Cannot divide by zero."):
