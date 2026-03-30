@@ -6,26 +6,49 @@ This module contains unit tests for the simple_calculator function defined in la
 
 import pytest
 from labs.lab_1.lab_1b import simple_calculator
+import tests
 
 def test_addition():
     assert simple_calculator("add", 5, 3) == 8          # Test for positive numbers
     assert simple_calculator("add", -2, 2) == 0         # Test for negative and positive number
     assert simple_calculator("add", 0, 0) == 0          # Test for zero addition
+    assert simple_calculator("add", -4, -1) == -5      # Test for negative numbers
+    assert simple_calculator("add", 2.5, 3.5) == 6.0   # Test for float numbers
+    assert simple_calculator("add", 1e10, 1e10) == 2e10 # Test for large numbers
+    assert simple_calculator("add", 1e-10, 1e-10) == 2e-10 # Test for small numbers
+    assert simple_calculator("add", 1e10, -1e10) == 0 # Test for large positive and negative numbers    
+    assert simple_calculator("add", 1e-10, -1e-10) == 0 # Test for small positive and negative numbers
 
 def test_subtraction():
     assert simple_calculator("subtract", 5, 3) == 2     # Test for positive numbers
     assert simple_calculator("subtract", -2, -2) == 0   # Test for negative numbers
     assert simple_calculator("subtract", 0, 5) == -5    # Test for zero minuend
+    assert simple_calculator("subtract", 5, 0) == 5     # Test for zero subtrahend
+    assert simple_calculator("subtract", 2.5, 1.5) == 1.0 # Test for float numbers
+    assert simple_calculator("subtract", 1e10, 1e9) == 9e9 # Test for large numbers
+    assert simple_calculator("subtract", 1e-10, 1e-11) == 9e-11 # Test for small numbers
+    assert simple_calculator("subtract", 1e10, -1e10) == 2e10 # Test for large positive and negative numbers
+    assert simple_calculator("subtract", 1e-10, -1e-10) == 2e-10 # Test for small positive and negative numbers
 
 def test_multiplication():
     assert simple_calculator("multiply", 5, 3) == 15    # Test for positive numbers
     assert simple_calculator("multiply", -2, 2) == -4   # Test for negative and positive number
     assert simple_calculator("multiply", 0, 100) == 0   # Test for multiplication by zero
+    assert simple_calculator("multiply", -4, -1) == 4   # Test for negative numbers
+    assert simple_calculator("multiply", 2.5, 3.5) == 8.75 # Test for float numbers
+    assert simple_calculator("multiply", 1e10, 1e10) == 1e20 # Test for large numbers
+    assert simple_calculator("multiply", 1e-10, 1e-10) == 1e-20 # Test for small numbers
+    assert simple_calculator("multiply", 1e10, -1e10) == -1e20 # Test for large positive and negative numbers
+    assert simple_calculator("multiply", 1e-10, -1e-10) == -1e-20 # Test for small positive and negative numbers
 
 def test_division():
     assert simple_calculator("divide", 6, 3) == 2       # Test for positive numbers
     assert simple_calculator("divide", -4, 2) == -2     # Test for negative and positive number
     assert simple_calculator("divide", 5, 2) == 2.5     # Test for division resulting in float
+    assert simple_calculator("divide", 1e10, 1e5) == 1e5 # Test for large numbers
+    assert simple_calculator("divide", 1e-10, 1e-5) == 1e-5 # Test for small numbers
+    assert simple_calculator("divide", 1e10, -1e5) == -1e5 # Test for large positive and negative numbers
+    assert simple_calculator("divide", 1e-10, -1e-5) == -1e-5 # Test for small positive and negative numbers
 
 def test_division_by_zero():
     with pytest.raises(ValueError, match="Cannot divide by zero."):
